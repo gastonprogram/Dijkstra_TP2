@@ -3,10 +3,8 @@ package prin;
 import api.ConjuntoTDA;
 
 import api.GrafoTDA;
-import dijkstraAlgorithm.DijkstraUsaInterfazCostos;
-import dijkstraAlgorithm.DijkstraDirectoImplementacion;
-import dijkstraAlgorithm.DijkstraUsaInterfazCaminoReal;
-import imp.GrafoLD;
+import dijkstraAlgorithm.DijkstraCostosMinimos;
+import dijkstraAlgorithm.DijkstraCaminoCostosMinimos;
 import imp.GrafoMA;
 
 public class prin {
@@ -51,8 +49,8 @@ public class prin {
 	}
 	
 	public static void main(String[] args) {
-		//GrafoTDA a = new GrafoMA();
-		GrafoMA a = new GrafoMA();
+		
+		GrafoTDA a = new GrafoMA();
 		a.inicializarGrafo();
 		a.agregarVertice(3);
 		a.agregarVertice(1);
@@ -85,11 +83,11 @@ public class prin {
 
 		System.out.println("");
 		System.out.println("costo minimo");
-		mostrarGrafo(DijkstraUsaInterfazCostos.dijkstraCostosMinimos(a, 1));
+		mostrarGrafo(DijkstraCostosMinimos.dijkstraCostosMinimos(a, 1));
 
 		System.out.println("");
 		System.out.println("Caminos reales minimos");
-		mostrarGrafo(DijkstraUsaInterfazCaminoReal.dijkstraCaminosReales(a, 1));
+		mostrarGrafo(DijkstraCaminoCostosMinimos.dijkstraCaminosReales(a, 1));
 	}
 
 }

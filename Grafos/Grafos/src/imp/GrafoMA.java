@@ -5,9 +5,9 @@ import api.GrafoTDA;
 
 public class GrafoMA implements GrafoTDA {
 
-	public int[][] mAdy;
-	public int[] etiquetas;
-	public int cantidad;
+	int[][] mAdy;
+	int[] etiquetas;
+	int cantidad;
 	int mx = 55;
 	
 	@Override
@@ -75,7 +75,7 @@ public class GrafoMA implements GrafoTDA {
 		return mAdy[o][d];
 	}
 
-	public int vertice2indice(int v) {
+	private int vertice2indice(int v) {
 		int i = cantidad - 1;
 		while (i >= 0 && etiquetas[i] != v)
 			i--;
