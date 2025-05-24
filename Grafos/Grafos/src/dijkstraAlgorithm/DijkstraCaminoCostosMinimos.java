@@ -12,7 +12,7 @@ public class DijkstraCaminoCostosMinimos {
         int[] etiquetas = new int[55];
         int[] distancias = new int[55];
         int[] predecesores = new int[55];
-        boolean[] visitados = new boolean[55];
+        boolean[] visitados = new boolean[55]; // cloud
         int cantidadVertices = 0;
 
         //copiar vertices
@@ -24,6 +24,8 @@ public class DijkstraCaminoCostosMinimos {
             etiquetas[cantidadVertices++] = x;
             conjuntoAuxiliar.agregar(x);
         }
+        
+        //volvemos a rellenar el conjunto de vertices
         while (!conjuntoAuxiliar.conjuntoVacio()) {
             int x = conjuntoAuxiliar.elegir();
             conjuntoAuxiliar.sacar(x);
@@ -41,20 +43,20 @@ public class DijkstraCaminoCostosMinimos {
         
         //principal
         for (int i = 0; i < cantidadVertices - 1; i++){
-            int u = seleccionarVerticeMinimo(distancias, visitados, cantidadVertices);
-            if (u == -1) {
+            int indiceMinimo = seleccionarVerticeMinimo(distancias, visitados, cantidadVertices);
+            if (indiceMinimo == -1) {
             	break;
             }
-            visitados[u] = true;
+            visitados[indiceMinimo] = true;
             
           //relaxation
             for (int v = 0; v < cantidadVertices; v++){
-                if (!visitados[v] && grafo.existeArista(etiquetas[u], etiquetas[v])) {
-                    int peso = grafo.pesoArista(etiquetas[u], etiquetas[v]);
-                    int nuevaDistancia = distancias[u] + peso;
+                if (!visitados[v] && grafo.existeArista(etiquetas[indiceMinimo], etiquetas[v])) {
+                    int peso = grafo.pesoArista(etiquetas[indiceMinimo], etiquetas[v]);
+                    int nuevaDistancia = distancias[indiceMinimo] + peso;
                     if (nuevaDistancia < distancias[v]){
                         distancias[v] = nuevaDistancia;
-                        predecesores[v] = u;
+                        predecesores[v] = indiceMinimo;
                     }
                 }
             }
@@ -71,8 +73,8 @@ public class DijkstraCaminoCostosMinimos {
             if (predecesores[i] != -1) {
                 int desde = etiquetas[predecesores[i]];
                 int hasta = etiquetas[i];
-                int pesoOriginal = grafo.pesoArista(desde, hasta);
-                grafoResultado.agregarArista(desde, hasta, pesoOriginal);
+                int pesoReal = grafo.pesoArista(desde, hasta);
+                grafoResultado.agregarArista(desde, hasta, pesoReal);
             }
         }
 

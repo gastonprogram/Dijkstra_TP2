@@ -23,6 +23,8 @@ public class DijkstraCostosMinimos {
             etiquetas[cantidadVertices++] = vertice;
             conjuntoAuxiliar.agregar(vertice);
         }
+        
+        //volvemos a rellenar el conjunto de vertices
         while (!conjuntoAuxiliar.conjuntoVacio()) {
             int vertice = conjuntoAuxiliar.elegir();
             conjuntoAuxiliar.sacar(vertice);

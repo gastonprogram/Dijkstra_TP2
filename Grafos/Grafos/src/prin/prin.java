@@ -50,44 +50,41 @@ public class prin {
 	
 	public static void main(String[] args) {
 		
-		GrafoTDA a = new GrafoMA();
-		a.inicializarGrafo();
-		a.agregarVertice(3);
-		a.agregarVertice(1);
-		a.agregarVertice(5);
-		a.agregarVertice(7);
-		a.agregarVertice(8);
-		a.agregarArista(1, 3, 2);
-		a.agregarArista(1, 5, 1);
-		a.agregarArista(1, 7, 3);
-		a.agregarArista(3, 1, 7);
-		a.agregarArista(3, 7, 1);
-		a.agregarArista(5, 1, 7);
-		a.agregarArista(5, 7, 2);
-		a.agregarArista(7, 1, 5);
-		a.agregarArista(7, 3, 3);
-		a.agregarArista(7, 8, 2);
-
-		System.out.println("Grafo completo");
-		mostrarGrafo(a);
-		//a.eliminarVertice(3);
-
-		//System.out.println("Grafo completo");
-		//mostrarGrafo(a);
-
+		GrafoTDA grafoPrueba = new GrafoMA();
+		grafoPrueba.inicializarGrafo();
 		
-		//metodo que usa directo la implementacion
-        //DijkstraDirectoImplementacion.dijkstra(a, 1);
+		//añadimos vertices y aristas 
+		grafoPrueba.agregarVertice(1);
+		grafoPrueba.agregarVertice(2);
+		grafoPrueba.agregarVertice(3);
+		grafoPrueba.agregarVertice(4);
+		grafoPrueba.agregarVertice(5);
+		grafoPrueba.agregarVertice(6);
+		grafoPrueba.agregarArista(1, 2, 2);
+		grafoPrueba.agregarArista(1, 3, 1);
+		grafoPrueba.agregarArista(1, 4, 7);
+		grafoPrueba.agregarArista(1, 5, 5);
+		grafoPrueba.agregarArista(2, 6, 2);
+		grafoPrueba.agregarArista(3, 2, 2);
+		grafoPrueba.agregarArista(3, 5, 2);
+		grafoPrueba.agregarArista(4, 1, 3);
+		grafoPrueba.agregarArista(5, 4, 2);
+		grafoPrueba.agregarArista(5, 6, 2);
+		grafoPrueba.agregarArista(6, 3, 3);
 		
-		//metodo que usa interfaz
+		//mostramos el grafo original completo
+		System.out.println("Grafo completo:");
+		mostrarGrafo(grafoPrueba);
 
 		System.out.println("");
-		System.out.println("costo minimo");
-		mostrarGrafo(DijkstraCostosMinimos.dijkstraCostosMinimos(a, 1));
+		//msotrar el grafo de costo minimo (no camino real)
+		System.out.println("Grafo de costo minimo:");
+		mostrarGrafo(DijkstraCostosMinimos.dijkstraCostosMinimos(grafoPrueba, 1));
 
+		//mostrar el grafo de caminos de costos minimos (camino real)
 		System.out.println("");
-		System.out.println("Caminos reales minimos");
-		mostrarGrafo(DijkstraCaminoCostosMinimos.dijkstraCaminosReales(a, 1));
+		System.out.println("Grafo de caminos costos minimos:");
+		mostrarGrafo(DijkstraCaminoCostosMinimos.dijkstraCaminosReales(grafoPrueba, 1));
 	}
 
 }
