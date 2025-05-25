@@ -23,13 +23,6 @@ public class DijkstraCostosMinimos {
             etiquetas[cantidadVertices++] = vertice;
             conjuntoAuxiliar.agregar(vertice);
         }
-        
-        //volvemos a rellenar el conjunto de vertices
-        while (!conjuntoAuxiliar.conjuntoVacio()) {
-            int vertice = conjuntoAuxiliar.elegir();
-            conjuntoAuxiliar.sacar(vertice);
-            conjuntoVertices.agregar(vertice);
-        }
 
         // inicializar el valor de las distancias/peso
         for (int i = 0; i < cantidadVertices; i++) {

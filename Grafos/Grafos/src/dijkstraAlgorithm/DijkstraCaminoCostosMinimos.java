@@ -25,13 +25,6 @@ public class DijkstraCaminoCostosMinimos {
             conjuntoAuxiliar.agregar(x);
         }
         
-        //volvemos a rellenar el conjunto de vertices
-        while (!conjuntoAuxiliar.conjuntoVacio()) {
-            int x = conjuntoAuxiliar.elegir();
-            conjuntoAuxiliar.sacar(x);
-            conjuntoVertices.agregar(x);
-        }
-
         // inicializar el valor de las distancias/peso
         for (int i = 0; i < cantidadVertices; i++) {
             distancias[i] = Integer.MAX_VALUE;
