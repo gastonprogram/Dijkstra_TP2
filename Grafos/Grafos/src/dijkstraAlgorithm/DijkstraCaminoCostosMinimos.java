@@ -16,13 +16,10 @@ public class DijkstraCaminoCostosMinimos {
         int cantidadVertices = 0;
 
         //copiar vertices
-        ConjuntoTDA conjuntoAuxiliar = new ConjuntoLD();
-        conjuntoAuxiliar.inicializarConjunto();
         while (!conjuntoVertices.conjuntoVacio()) {
             int x = conjuntoVertices.elegir();
             conjuntoVertices.sacar(x);
             etiquetas[cantidadVertices++] = x;
-            conjuntoAuxiliar.agregar(x);
         }
         
         // inicializar el valor de las distancias/peso
